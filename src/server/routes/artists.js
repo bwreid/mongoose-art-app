@@ -1,12 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../models');
+var artists = require('../queries/artists');
 
 router.get('/', function(req, res, next) {
-  db.Artist
-  .find({})
-  .populate('artworks')
-  .exec(function (err, artists) {
+  artists.getAll().exec(function (err, artists) {
     res.render('artists/index', { artists: artists });  
   });
 });

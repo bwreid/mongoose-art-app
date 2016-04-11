@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../models');
+var artworks = require('../queries/artworks');
 
 router.get('/', function(req, res, next) {
-  db.Artwork.find({}, function (err, artworks) {
+  artworks.getAll().exec(function (err, artworks) {
     res.render('artworks/index', { artworks: artworks });
   });
 });
