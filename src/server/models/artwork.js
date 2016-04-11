@@ -2,7 +2,11 @@ var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
 var ArtworkSchema = new Schema({
-  currentLocation: String,
+  currentLocation: {
+    minlength: 5,
+    type: String,
+    required: true
+  },
   imageUrl: String,
   name: String,
   year: Number
