@@ -1,7 +1,7 @@
 var db = require('../models');
 
 function getAll() {
-  return db.Artwork.find({});
+  return db.Artwork.find({}).populate('_artist');
 }
 
 function create (body, cb) {

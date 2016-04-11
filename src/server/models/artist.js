@@ -6,7 +6,7 @@ var ArtistSchema = new Schema({
   name: String,
   movement: String,
   quotes: [String],
-  artworks: [{ type: Schema.Types.ObjectId, ref: 'artworks'}]
+  artworks: [{ type: Schema.Types.ObjectId, ref: 'artworks' }]
 });
 
 var Artist = mongoose.model('artists', ArtistSchema);

@@ -11,7 +11,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/new', function (req, res, next) {
-  res.render('artworks/new');
+  queries.artists
+  .getAll()
+  .exec(function (err, artists) {
+    res.render('artworks/new', { artists: artists });  
+  })
 });
 
 router.post('/', function (req, res, next) {
@@ -19,10 +23,15 @@ router.post('/', function (req, res, next) {
   .create(req.body)
   .save(function (err, artwork) {
     if (err) {
-      res.render('artworks/new', { 
-        errors: err.errors, 
-        artwork: req.body 
-      });
+      queries.artists
+      .getAll()
+      .exec(function (err, artists) {
+        res.render('artworks/new', { 
+          errors: err.errors, 
+          artwork: req.body,
+          artists: artists
+        });
+      })
     } else {
       res.redirect('/artworks')  
     }

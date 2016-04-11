@@ -9,7 +9,8 @@ var ArtworkSchema = new Schema({
   },
   imageUrl: String,
   name: String,
-  year: Number
+  year: Number,
+  _artist: { type: Schema.Types.ObjectId, ref: 'artists' }
 });
 
 var Artwork = mongoose.model('artworks', ArtworkSchema);
