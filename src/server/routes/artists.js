@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var artists = require('../queries/artists');
+var queries = require('../queries');
 
 router.get('/', function(req, res, next) {
-  artists.getAll().exec(function (err, artists) {
+  queries.artists
+  .getAll()
+  .exec(function (err, artists) {
     res.render('artists/index', { artists: artists });  
   });
 });

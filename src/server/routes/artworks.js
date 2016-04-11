@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var artworks = require('../queries/artworks');
+var queries = require('../queries');
 
 router.get('/', function(req, res, next) {
-  artworks.getAll().exec(function (err, artworks) {
+  queries.artworks
+  .getAll()
+  .exec(function (err, artworks) {
     res.render('artworks/index', { artworks: artworks });
   });
 });
@@ -13,7 +15,9 @@ router.get('/new', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-  artworks.create(req.body).save(function (err, artwork) {
+  queries.artworks
+  .create(req.body)
+  .save(function (err, artwork) {
     if (err) {
       res.render('artworks/new', { 
         errors: err.errors, 
