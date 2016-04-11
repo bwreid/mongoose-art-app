@@ -18,7 +18,12 @@
              src="{{artist.imageUrl}}"
              />
         <h4>{{ artist.name }}</h4>
-      </div>  
+      </div>
+      <div class="col-xs-9">
+        {% for artwork in artist.artworks %}
+          <p>Created <strong>{{ artwork.name }}</strong> in {{ artwork.year }}</p>
+        {% endfor %}
+      </div>
     </div>
   {% endfor %}
 </div>
