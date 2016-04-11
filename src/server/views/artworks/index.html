@@ -9,6 +9,18 @@
       <h1>Artworks Index</h1>      
     </div>
   </div>
+
+  {% for artwork in artworks %}
+    <div class="row">
+      <div class="col-xs-3">
+        <img alt="{{artwork.name}}"
+             class="artwork" 
+             src="{{artwork.imageUrl}}"
+             />
+        <h4>{{ artwork.name }}</h4>
+      </div>  
+    </div>
+  {% endfor %}
 </div>
 
 {% endblock %}

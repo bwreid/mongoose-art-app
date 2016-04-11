@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var db = require('../models');
 
 router.get('/', function(req, res, next) {
-  res.render('artists/index', { title: 'Artists' });
+  db.Artist.find({}, function (err, artists) {
+    res.render('artists/index', { artists: artists });  
+  });
 });
 
 module.exports = router;
